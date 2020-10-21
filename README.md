@@ -79,3 +79,23 @@ python demo_image.py --image=resources/ski_368.jpg --output-image=out2.png --cre
 python demo_video.py --video=resources/sample1.mp4 --output-video=sample1_out1.mp4 --create-model-fn=create_openpose_2branches_vgg --input-size=368 --output-resize-factor=8 --paf-idx=10 --heatmap-idx=11
 python demo_video.py --video=resources/sample1.mp4 --output-video=sample1_out2.mp4 --create-model-fn=create_openpose_singlenet --input-size=224 --output-resize-factor=8 --paf-idx=2 --heatmap-idx=3
 ```
+
+
+## Notes about COCO joint indexes
+![coco_joints](https://user-images.githubusercontent.com/4140686/79165322-3fbd1700-7db9-11ea-851a-2baa20d57882.png)
+
+```bash
+    idx_in_coco = [0, lambda x: JointsLoader._get_neck(x, 5, 6), 6, 8,
+                   10, 5, 7, 9, 12, 14, 16, 11, 13, 15, 2, 1, 4, 3]
+
+    idx_in_coco_str = [
+        'Nose','Neck','RShoulder','RElbow','RWrist','LShoulder','LElbow','LWrist',
+        'RHip','RKnee','RAnkle','LHip','LKnee','LAnkle','REye','LEye','REar','LEar']
+
+    joint_pairs = list(zip(
+        [1, 8, 9, 1, 11, 12, 1, 2, 3, 2, 1, 5, 6, 5, 1, 0, 0, 14, 15],
+        [8, 9, 10, 11, 12, 13, 2, 3, 4, 16, 5, 6, 7, 17, 0, 14, 15, 16, 17]))
+```
+
+
+
